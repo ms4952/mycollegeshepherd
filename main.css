@@ -1,0 +1,72 @@
+body {
+  font-family: "Avenir";
+  font-size: 1rem;
+  background-image: url("background.jpg");
+}
+
+header {
+  background: #2a6c00;
+}
+
+.btn {
+  background: #a7a8a9;
+  border-color: #a7a8a9;
+  color: white;
+}
+
+.btn:hover {
+  background: #2a6c00;
+  border-color: #2a6c00;
+  color: #fff;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #fff;
+}
+
+.content {
+  padding: 2rem 1.5rem;
+}
+
+.jumbotron {
+  padding: 1.5rem;
+  background: 0;
+}
+
+.jumbotron img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* confining  the image rendered in table to 100 px */
+table img {
+  width: 100px;
+  height: auto;
+}
+/* adding opacity , hiding the rent button and calling this from rent.html */
+
+.unavailable {
+  opacity: 0.25;
+}
+
+.unavailable button.delbtn {
+  visibility: hidden;
+}
+
+.card-img-top {
+  width: 50%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+input.hidden-number-spinner::-webkit-outer-spin-button,
+input.hidden-number-spinner::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.hidden-number-spinner[type=number] {
+    -moz-appearance:textfield;
+}

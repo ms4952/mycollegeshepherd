@@ -1,0 +1,140 @@
+{% extends 'base.html' %} {% set active = "Home" %} {% block title %} Home {% endblock %} {% block content %}
+<script src="public/js/roommate.js"></script>
+<link rel="stylesheet" type="text/css" href="public/css/roommate.css" />
+<section class="jumbotron">
+    <div class="text-center">
+        <p class="lead text-muted">New In City! We are here to help you!</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <form method="GET" action="/roomate">
+                <div class="form-group">
+                    <label class="lead" for="locality">Locality</label>
+                    <div class="input-group locality-input-group-container">
+                        <input type="text" class="form-control" placeholder="#123, Example street" id="locality"
+                            name="locality" value="{{ params.locality }}" />
+                        <span class="input-group-text" title="Locate using your present location" id="locateMe">
+                            <span class="locator-spinner-grow" role="status" aria-hidden="true"></span>
+                            &nbsp;
+                        </span>
+                    </div>
+                </div>
+
+                <label class="lead" for="budget">Budget</label>
+                <div class="form-row" id="budget">
+                    <div class="form-group col">
+                        <label for="minBudget" id="minBudgetLabel">Min</label>
+                        <input type="number" class="form-control" id="minBudget" name="minBudget" />
+                        <input type="range" class="form-control-range custom-range" min="0" max="50000"
+                            id="minBudgetRange" value="{{ params.minBudget|default('0') }}" step="100" />
+                    </div>
+                    <div class="form-group col">
+                        <label for="maxBudget" id="maxBudgetLabel">Max</label>
+                        <input type="number" class="form-control" id="maxBudget" name="maxBudget" />
+                        <input type="range" class="form-control-range custom-range" min="0" max="50000"
+                            id="maxBudgetRange" value="{{ params.maxBudget|default('50000') }}" step="100" />
+                    </div>
+                </div>
+
+                <label class="lead" for="gender">Looking to live with</label>
+                <div class="form-group" id="gender">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genderOptions" id="maleRadio" value="Male"
+                            {{ 'checked' if params.genderOptions is defined and params.genderOptions == "Male" }} />
+                        <label class="form-check-label" for="maleRadio">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genderOptions" id="femaleRadio"
+                            value="Female"
+                            {{ 'checked' if params.genderOptions is defined and params.genderOptions == "Female" }} />
+                        <label class="form-check-label" for="femaleRadio">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genderOptions" id="noPrefRadio" value="none"
+                            {{ 'checked' if params.genderOptions is undefined or params.genderOptions == "none" }} />
+                        <label class="form-check-label" for="noPrefRadio">No Preference</label>
+                    </div>
+                </div>
+
+                <label class="lead" for="food">Food Preferences</label>
+                <div class="form-group" id="food">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="foodOptions" id="vegFood" value="Veg"
+                            {{ 'checked' if params.foodOptions is defined and params.foodOptions == "Veg" }} />
+                        <label class="form-check-label" for="vegFood">Veg</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="foodOptions" id="nonvegFood" value="Non-Veg"
+                            {{ 'checked' if params.foodOptions is defined and params.foodOptions == "Non-Veg" }} />
+                        <label class="form-check-label" for="femaleRadio">Non-Veg</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="foodOptions" id="nonvegFood" value="Vegan"
+                            {{ 'checked' if params.foodOptions is defined and params.foodOptions == "Vegan" }} />
+                        <label class="form-check-label" for="femaleRadio">Vegan</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="foodOptions" id="noPrefFood" value="none"
+                            {{ 'checked' if params.foodOptions is undefined or params.foodOptions == "none" }} />
+                        <label class="form-check-label" for="noPrefFood">No Preference</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="lead" for="hobbies">Hobbies</label>
+                    <div class="input-group">
+                        <select id="hobbies" multiple class="form-control" name="hobbies">
+                            <option {{ 'selected' if 'Adventurous' in params.getlist('hobbies') }}>Adventurous</option>
+                            <option {{ 'selected' if 'Coder/Hacker' in params.getlist('hobbies') }}>Coder/Hacker</option>
+                            <option {{ 'selected' if 'Foodie' in params.getlist('hobbies') }}>Foodie</option>
+                            <option {{ 'selected' if 'Party Starter' in params.getlist('hobbies') }}>Party Starter</option>
+                            <option {{ 'selected' if 'Music Listener' in params.getlist('hobbies') }}>Music Listener</option>
+                            <option {{ 'selected' if 'Fashionista' in params.getlist('hobbies') }}>Fashionista</option>
+                            <option {{ 'selected' if 'Gamer' in params.getlist('hobbies') }}>Gamer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-info" value="Search" />
+            </form>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="row row-cols-md-2">
+                {% for d in value %}
+                {% if ((params.locality is undefined or params.locality in d['address']) and
+                    (params.minBudget is undefined or params.minBudget|int <= d['listing']) and
+                    (params.maxBudget is undefined or params.maxBudget|int >= d['listing']) and
+                    (params.genderOptions is undefined or params.genderOptions == "none" or params.genderOptions == d['gender']) and
+                    (params.foodOptions is undefined or params.foodOptions == "none" or params.foodOptions == d['food'])) %}
+                <div class="col mb-4">
+                    <div class="card roommate-container">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="/public/img/people/{{d['image']}}" class="card-img" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ d['name']}}</h5>
+                                    <div class="card-subtitle text-muted mb-2">{{ d['gender'] }}</div>
+                                    <div class="card-text">{{ d['address'] }}</div>
+                                    <p class="card-text">${{ d['listing'] }}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Posted on {{ d['postDate'] }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+.locality-input-group-container {
+    position: relative;
+}
+
+#locateMe {
+    position: absolute;
+    right: 0rem;
+    border: none;
+    background: url(/public/img/ic_gps_fixed.svg) no-repeat center;
+    height: 100%;
+    width: 2rem;
+    padding: 0rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+#locateMe .locator-spinner-grow {
+    display: none;
+}
+
+#locateMe.locating {
+    background: url(/public/img/ic_location_searching.svg) no-repeat center;
+}
+
+#locateMe.locating .locator-spinner-grow {
+    display: inline-block;
+    position: relative;
+    vertical-align: text-bottom;
+    background-color: currentColor;
+    border-radius: 50%;
+    -webkit-animation: locator-spinner-grow .75s linear infinite;
+    animation: locator-spinner-grow .75s linear infinite;
+}
+
+@keyframes locator-spinner-grow {
+    from {
+        left: 50%;
+        height: 0rem;
+        width: 0rem;
+    }
+    to {
+        left: 25%;
+        height: 1rem;
+        width: 1rem;
+    }
+}
+
+.roommate-container {
+    height: 100%;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyCollegeShepherd - {% block title %}{% endblock %}</title>
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link href="public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+
+    <script src="public/lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="public/lib/popper/popper.min.js"></script>
+    <script src="public/lib/bootstrap/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+        <a class="navbar-brand" href="/index">Home</a>
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navb"
+          aria-expanded="true"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navb" class="navbar-collapse collapse hide">
+          <ul class="navbar-nav">
+            <li>
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/register"
+                ><span class="fas fa-user"></span> Sign Up</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="#"
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#loginModal"
+              >
+                <span class="fas fa-sign-in-alt"></span> Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Login</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="GET" action="/firstpage">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail3"
+                    placeholder="someone@example.com"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="inputPassword3"
+                    required
+                    minlength="6"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMeCheck1"
+                    />
+                    <label class="form-check-label" for="rememberMeCheck1">
+                      Remember Me
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <input type="submit" class="btn btn-primary" value="Sign in" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container content">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  </body>
+</html>

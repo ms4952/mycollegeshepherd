@@ -1,0 +1,78 @@
+<!-- Mitali Sanwal ms4952@drexel.edu-->
+<!-- CS530: DUI, Assignment [1]-->
+{% extends 'base.html' %} {% set active = "Home" %} {% block title %} Home {%
+endblock %} {% block content %}
+<!--add about info and the link-->
+<section class="jumbotron">
+  <div class="container"></div>
+</section>
+<div class="card-group">
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/apartment Setup.jpg" />
+
+    <div class="card-body">
+      <h5 class="card-title">Apartment Setup</h5>
+      <p class="card-text">
+        Major stores around your college ,having apartment essentials
+      </p>
+      <a href="/apartmentsetup" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/info1.jpg" />
+    <div class="card-body">
+      <h5 class="card-title">Information</h5>
+      <p class="card-text">
+        Things you should know when settling in a new city or even country.
+      </p>
+      <a href="/info" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/food3.jpeg" />
+    <div class="card-body">
+      <h5 class="card-title">Food</h5>
+      <p class="card-text">
+        Some of the prime food deliveries in your area
+      </p>
+      <a href="/food" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+</div>
+<div class="pb-4"></div>
+<div class="card-group">
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/grocery1.jpg" />
+
+    <div class="card-body">
+      <h5 class="card-title">Local Grocery Stores</h5>
+      <p class="card-text">
+        Where can you buy your everyday groceries from?
+      </p>
+      <a href="/localstores" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/room2.jpg" />
+
+    <div class="card-body">
+      <h5 class="card-title">Find Roomate</h5>
+      <p class="card-text">
+        Where can I find like minded people to stay with
+      </p>
+      <a href="/roomate" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="img-fluid" src="/public/img/college/transport.jpg" />
+    <div class="card-body">
+      <h5 class="card-title">Going Around</h5>
+      <p class="card-text">
+        How to go around your city : Bus, Cab , Train , Bicycle
+      </p>
+      <a href="/transport" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

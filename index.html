@@ -1,0 +1,153 @@
+{% extends 'base.html' %} {% set active = "Home" %} {% block title %} Home {%
+endblock %} {% block content %}
+<style>
+  .onoffswitch3 {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .onoffswitch3-checkbox {
+    display: none;
+  }
+
+  .onoffswitch3-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0px solid #999999;
+    border-radius: 0px;
+  }
+
+  .onoffswitch3-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s;
+    -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s;
+    transition: margin 0.3s ease-in 0s;
+  }
+
+  .onoffswitch3-inner > span {
+    display: block;
+    float: left;
+    position: relative;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 14px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .onoffswitch3-inner .onoffswitch3-active {
+    padding-left: 10px;
+    background-color: #eeeeee;
+    color: #ffffff;
+  }
+
+  .onoffswitch3-inner .onoffswitch3-inactive {
+    width: 100px;
+    padding-left: 16px;
+    background-color: #eeeeee;
+    color: #ffffff;
+    text-align: right;
+  }
+
+  .onoffswitch3-switch {
+    display: block;
+    width: 50%;
+    margin: 0px;
+    text-align: center;
+    border: 0px solid #999999;
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+  .onoffswitch3-active .onoffswitch3-switch {
+    background: #27a1ca;
+    left: 0;
+    width: 160px;
+  }
+  .onoffswitch3-inactive {
+    background: #a1a1a1;
+    right: 0;
+    width: 20px;
+  }
+  .onoffswitch3-checkbox:checked + .onoffswitch3-label .onoffswitch3-inner {
+    margin-left: 0;
+  }
+
+  .glyphicon-remove {
+    padding: 3px 0px 0px 0px;
+    color: #fff;
+    background-color: #000;
+    height: 25px;
+    width: 25px;
+    border-radius: 15px;
+    border: 2px solid #fff;
+  }
+
+  .scroll-text {
+    color: #000;
+  }
+</style>
+<section class="jumbotron">
+  <div class="text-center">
+    <h1 class="jumbotron-heading">My College Shepherd</h1>
+    <p class="lead text-muted">New In City! We are here to help you!</p>
+    <div class="onoffswitch3">
+      <input
+        type="checkbox"
+        name="onoffswitch3"
+        class="onoffswitch3-checkbox"
+        id="myonoffswitch3"
+        checked
+      />
+      <label class="onoffswitch3-label" for="myonoffswitch3">
+        <span class="onoffswitch3-inner">
+          <span class="onoffswitch3-active">
+            <marquee class="scroll-text"
+              ><a
+                href="https://6abc.com/travel/septa-reveals-proposed-fare-restructuring-plan/6003458/"
+                target="_blank"
+                >SEPTA reveals details of proposed fare restructuring plan.</a
+              >
+
+              <span class="glyphicon glyphicon-forward"></span>
+              <a
+                href="https://6abc.com/health/philadelphias-st-patricks-day-parade-canceled/6001751/"
+                target="_blank"
+                >Philadelphia's St. Patrick's Day Parade canceled amid
+                coronavirus concerns.</a
+              ><span class="glyphicon glyphicon-forward"></span>
+              <a
+                href="https://6abc.com/society/the-first-earth-day-celebrations-in-philly/5999953/"
+                target="_blank"
+                >The first Earth Day celebrations in Philadelphia.</a
+              >
+            </marquee>
+            <span class="onoffswitch3-switch"
+              >BREAKING NEWS: <span class="glyphicon glyphicon-remove"></span
+            ></span>
+          </span>
+          <span class="onoffswitch3-inactive"
+            ><span class="onoffswitch3-switch">SHOW BREAKING NEWS</span></span
+          >
+        </span>
+      </label>
+    </div>
+
+    <p><img class="img-fluid" src="/public/img/college.jpg" /></p>
+  </div>
+</section>
+
+{% endblock %}
